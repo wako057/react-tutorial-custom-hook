@@ -15,6 +15,7 @@ export default function AvailablePlaces({ onSelectPlace }) {
       setIsFetching(true);
       try {
         const places = await fetchAvailablePlaces();
+        console.log('blubluublu', places);
         navigator.geolocation.getCurrentPosition((position) => {
           const sortedPlaces = sortPlacesByDistance(
             places,
@@ -34,7 +35,6 @@ export default function AvailablePlaces({ onSelectPlace }) {
 
     fetchPlaces();
   }, []);
-
 
   if (error) {
     return (<Error title="An error occured" message={error.message} />);
